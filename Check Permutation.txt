@@ -1,0 +1,34 @@
+/*
+For a given two strings, 'str1' and 'str2', check whether they are a permutation of each other or not.
+*/
+#include<iostream>
+using namespace std;
+
+bool checkpermutation(char str1[],char str2[]){
+	bool isabsent;
+	for(int i=0;str1[i]!='\0';i++){
+		isabsent=true;
+		for(int j=0;str2[j]!='\0';j++){
+			if(str1[i]==str2[j]){
+				str2[j]=0;
+				isabsent=false;
+				break;
+			}
+		}
+		if(isabsent==true)
+			return false;
+	}
+	return true;
+}
+
+int main(){
+	char str1[100],str2[100];
+	cout<<"Enter the first string"<<endl;
+	cin.getline(str1,100);
+	
+	cout<<"Enter the second string"<<endl;
+	cin.getline(str2,100);
+	
+	bool ispermutation=checkpermutation(str1,str2);
+	cout<<ispermutation;
+}
